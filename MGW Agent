@@ -1,0 +1,9 @@
+select agent_status, agent_ping, AGENT_INSTANCE, last_error_msg from mgw_gateway;
+
+BEGIN DBMS_MGWADM.SHUTDOWN;
+END;
+/
+
+BEGIN DBMS_MGWADM.STARTUP;
+END;
+/
