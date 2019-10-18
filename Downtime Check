@@ -1,0 +1,1 @@
+select distinct(reason) from dba_alert_history where reason like '%down%';
