@@ -1,0 +1,10 @@
+Select round(Sum(used.bytes) / 1024 / 1024 / 1024 ) || ' GB' "Database Size",
+	 round(Sum(used.bytes) / 1024 / 1024 / 1024 ) - 
+	 round(free.poo / 1024 / 1024 / 1024) || ' GB' "Used space",
+ 	 round(free.poo / 1024 / 1024 / 1024) || ' GB' "Free space"
+   From (Select bytes From v$datafile
+	Union	All
+	Select bytes From v$tempfile
+	Union	All
+	Select bytes From v$log) used,
+      (Select Sum(bytes) As poo From dba_free_space)free Group By free.poo ;
