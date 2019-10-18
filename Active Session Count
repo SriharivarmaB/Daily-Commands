@@ -1,0 +1,1 @@
+select inst_id,status,count(*) from gv$session group by inst_id,status
