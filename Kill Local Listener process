@@ -1,0 +1,1 @@
+ps -ef | grep -i local=no|grep -i SISUAT | awk '{print $2}' |xargs kill -9
