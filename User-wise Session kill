@@ -1,0 +1,3 @@
+select '!kill -9 '||p.spid||chr(10)|| 'alter system kill session '''||s.sid||','||s.serial#||''' immediate;' 
+from v$session s, v$process p where s.username like '&username'
+and s.paddr=p.addr;
