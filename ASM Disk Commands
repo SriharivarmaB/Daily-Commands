@@ -1,0 +1,28 @@
+#####################
+CANDIDATE DISK COUNT
+#####################
+
+select count(*) from v$asm_disk where HEADER_STATUS='CANDIDATE';
+
+##################
+DISK ADDED command
+##################
+
+alter diskgroup DATA add disk '/dev/asm_hdisk51';
+
+(OR)
+
+SQL>alter diskgroup DATA add disk '/dev/asm_hdisk51' rebalance power 6;
+
+##########################
+Remove disk from diskgroup 
+##########################
+
+SQL>alter diskgroup DG_BASIC_COMP drop disk 'DG_BASIC_COMP_0056';
+
+############################## 
+DISK GROUP REBALANCE POWER ADD 
+###############################
+
+SQL> alter diskgroup DATA rebalance power 8;
+
