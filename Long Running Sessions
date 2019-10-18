@@ -1,0 +1,4 @@
+set lines 1234 pages 1234
+col TARGET for a30
+col OPNAME for a20
+select SID,OPNAME,TARGET,SOFAR,TOTALWORK,START_TIME,TIME_REMAINING,round(l.SOFAR*100/l.TOTALWORK) from v$session_longops l where l.sid=&sid;
