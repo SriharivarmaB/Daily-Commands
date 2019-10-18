@@ -1,0 +1,23 @@
+set echo off
+set pagesize 50
+set lines 140
+set verify off
+set heading on
+set feedback on
+col SESS format a12
+col status format a10
+col program format a30
+col terminal format a12
+col "Machine Name" format a15
+col "DB User" format a14
+col "OS User" format a10
+col "Logon Time" format a14
+
+select rpad(s.username,14,' ') as "DB User",
+to_char(logon_time,'hh24:mi Mon/dd') as "Logon Time",
+initcap(status) as "Status",s.sid||','||s.serial# SESS,
+rpad(upper(substr(s.program,instr(s.program,'\',-1)+1)),30,' ') as "Program",
+rpad(lower(osuser),10,' ') as "OS User", rpad(s.terminal,12,' ') "Terminal",
+rpad(initcap(machine),15,' ') as "Machine Name" from v$session s
+where upper(s.username) like upper('%&Username%') and s.status='INACTIVE'
+order by machine,s.program;
