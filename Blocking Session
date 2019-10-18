@@ -1,0 +1,1 @@
+select distinct final_blocking_session from v$session;
