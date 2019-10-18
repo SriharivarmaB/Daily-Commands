@@ -1,0 +1,1 @@
+select qcsid,count(sid) from v$px_session group by qcsid;
