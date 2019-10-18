@@ -1,0 +1,9 @@
+Rman Target /
+
+run
+{
+allocate channel c1 device type sbt_tape parms 'ENV=(TDPO_OPTFILE=/usr/tivoli/tsm/client/oracle/bin64/tdpo.opt)';
+allocate channel c2 device type sbt_tape parms 'ENV=(TDPO_OPTFILE=/usr/tivoli/tsm/client/oracle/bin64/tdpo.opt)';
+set archivelog destination to '/Restore/oracle/ARCH_TEMP';
+restore archivelog from logseq 4551495 until logseq 4551694;
+}
