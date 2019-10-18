@@ -1,0 +1,2 @@
+set line 1234
+select username,profile,account_status,lock_date,expiry_date,profile from dba_users where username='&USERNAME';
