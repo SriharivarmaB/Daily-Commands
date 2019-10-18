@@ -1,0 +1,10 @@
+set linesize 220
+col RBS format a25
+col sid format 9999
+col user format a12
+col status format a12
+ col COMMAND for a20
+SELECT r.name "RBS", s.sid, s.serial#,s.username "USER", t.status,t.cr_get,t.phy_io,t.used_ublk,t.noundo,substr(s.program,1,78) "COMMAND"
+FROM sys.v_$session s, sys.v_$transaction t, sys.v_$rollname r
+WHERE  t.addr = s.taddr and  t.xidusn = r.usn and  s.sid=&SID
+ORDER  BY 1;
