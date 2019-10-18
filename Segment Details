@@ -1,0 +1,3 @@
+col OWNER for a20
+col SEGMENT_NAME for a35
+select OWNER,SEGMENT_NAME,BYTES/1024/1024/1024 from dba_segments where OWNER='&tablename' and TABLESPACE_NAME='&tablespacename' order by bytes desc;
