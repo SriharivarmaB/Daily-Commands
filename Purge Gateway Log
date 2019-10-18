@@ -1,0 +1,15 @@
+#########################
+Purge getway agent log 
+#########################
+
+1st .take backup >>>>>
+
+BSCSDB:/Oracle_Logs/oracle/MGW/log>cp oramgw-SVDG0209-20171122100400-27656828.log /backup1/oracle/MGW_LOGS &
+
+2nd check file size and file on backup location>>>>
+
+BSCSDB:/Oracle_Logs/oracle/MGW/log>ls -lrt /backup1/oracle/MGW_LOGS/oramgw-SVDG0209-20171122100400-27656828.log
+-rw-r-----    1 oradb    dba      10260927085 Jan 11 11:20 /backup1/oracle/MGW_LOGS/oramgw-SVDG0209-20171122100400-27656828.log
+
+3rd purge log fileusing (> file name) >>>>>>
+BSCSDB:/Oracle_Logs/oracle/MGW/log>> oramgw-SVDG0209-20171122100400-27656828.log &
